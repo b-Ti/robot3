@@ -1,0 +1,79 @@
+import robocode.AdvancedRobot;
+
+import robocode.ScannedRobotEvent;
+
+/**
+
+ * CrazyDog
+
+ * @author lhx
+
+ *
+
+ */
+
+public class CrazyDog extends AdvancedRobot {
+
+    public void run(){
+
+       setAdjustGunForRobotTurn(true);
+
+        setAdjustRadarForGunTurn(true);
+
+        while(true){
+
+          turnRadarRightRadians(5); 
+
+        }
+
+    }
+
+    @Override
+
+    public void onScannedRobot(ScannedRobotEvent e) {
+
+       //注意 这里的计算都以弧度为单位
+
+       double absBearing=0d;
+
+       //雷达转动角度
+
+       double radarTurnAngle=0d;
+
+       double gunTurnAngle=0d;
+
+       double bodyTurnAngle=0d;
+
+       //得到绝对角度差
+
+    absBearing=robocode.util.Utils.normalRelativeAngle(e.getBearingRadians()+getHeadingRadians());
+
+       //根据absBearing角算出Radar要调整的角度
+
+       radarTurnAngle=Math.sin(absBearing - getRadarHeadingRadians());
+
+       gunTurnAngle=Math.sin(absBearing - getGunHeadingRadians());
+
+       bodyTurnAngle=Math.sin(absBearing - getHeadingRadians());
+
+       //转动雷达，注意是向右
+
+       setTurnRadarRightRadians(radarTurnAngle);
+
+       //转动炮管
+
+       setTurnGunRightRadians(gunTurnAngle);
+
+       //转动身体
+
+       setTurnRightRadians(bodyTurnAngle);
+
+       //前进
+
+        setAhead(e.getDistance());
+
+       if(getGunHeat()<0.1)setFire(2);
+
+    }
+
+}
