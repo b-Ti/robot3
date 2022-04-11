@@ -2,15 +2,7 @@ import robocode.AdvancedRobot;
 
 import robocode.ScannedRobotEvent;
 
-/**
 
- * CrazyDog
-
- * @author lhx
-
- *
-
- */
 
 public class CrazyDog extends AdvancedRobot {
 
