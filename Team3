@@ -64,7 +64,7 @@ public class Team3 extends AdvancedRobot {
 
         setAhead(e.getDistance());
 
-       if(getGunHeat()<0.1)setFire(2);
+       if(getGunHeat()<0.1)setFire(5);
 
     }
 
