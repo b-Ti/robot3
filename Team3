@@ -4,7 +4,7 @@ import robocode.ScannedRobotEvent;
 
 
 
-public class CrazyDog extends AdvancedRobot {
+public class Team3 extends AdvancedRobot {
 
     public void run(){
 
